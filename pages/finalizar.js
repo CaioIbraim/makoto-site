@@ -19,6 +19,12 @@ const Cart = () => {
         return total
     }
 
+    //Se cartItem.length for igual a zero redireciona para a tela principal
+
+    if(cartItem.length == 0){
+        router.push({pathname: '/cart'})
+    }
+
     const createCheckoutSession = async () => {
         //Redirecionar para página de finalização de venda 
         //Capturar dados de entrega, calcular frete de entrega

@@ -1,14 +1,18 @@
 import React from 'react'
+import {useEffect} from 'react'
 import { useRecoilState   } from 'recoil';
 import { cartState } from "../atoms/cartState"
 import toast from 'react-hot-toast';
+import { useRouter } from 'next/router'
+
 
 const CartList = ({ data }) => {
-
   const { id, name, image, quantity, price } = data
   const [cartItem, setCartItem] = useRecoilState(cartState)
   const index = cartItem.findIndex((cartItem) => cartItem === data);
+   const router = useRouter()
 
+   
   const addItemsToCart = () => {
     setCartItem(prevState => {
         return prevState.map((item) => {
@@ -16,6 +20,8 @@ const CartList = ({ data }) => {
         })
     })
   }
+
+
 
   const removeItem = () => () => {
     const itemIndex = cartItem.findIndex((e) => e === data);
@@ -27,7 +33,7 @@ const CartList = ({ data }) => {
         return prevState.map((item) => {
             if(((item.quantity -1)  == 0) &&  (item.id === id)){ 
               //removar produto do carrinho
-           
+                
               toast(`${item.name} removido do carrinho`)
               
               return 0
@@ -39,6 +45,8 @@ const CartList = ({ data }) => {
 
 
   return (
+      <>
+      {quantity > 0 ? 
     <div className="container p-2">
 
       
@@ -59,12 +67,13 @@ const CartList = ({ data }) => {
           
         </div>
 
-
         <div className='text-1xl font-bold'>{(price * quantity).toLocaleString('en-US', {  style: 'currency',  currency: 'BRL',})}</div>
-
       </div>
 
     </div>
+    : null
+    }
+    </>
   )
 }
 
