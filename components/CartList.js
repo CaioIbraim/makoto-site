@@ -56,7 +56,12 @@ const CartList = ({ data }) => {
 
         <div>
           <div className='font-bold text-1xl'>{name}</div>
-          <div className='flex p-2'>{quantity} x {price.toLocaleString('en-US', {  style: 'currency',  currency: 'BRL',})}</div>
+          <div className='flex p-2'>
+          
+          {quantity} x {price.toLocaleString('en-US', {  style: 'currency',  currency: 'BRL',})}
+          
+          </div>
+        
           <div className='flex space-x-5'>
           <div className='text-indigo-600 p-3 bg-indigo-300 rounded-full cursor-pointer' onClick={rmItemsToCart}> -  1</div>
           

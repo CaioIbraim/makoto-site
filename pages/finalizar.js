@@ -3,7 +3,6 @@ import axios from "axios"
 import { useRecoilState } from 'recoil'
 import {useState} from 'react'
 import { cartState } from '../atoms/cartState'
-import CartList from '../components/CartList'
 import CartList2 from '../components/CartList2'
 
 import Navbar from "../components/Navbar"
@@ -29,12 +28,14 @@ const Cart = () => {
         //Redirecionar para página de finalização de venda 
         //Capturar dados de entrega, calcular frete de entrega
         //Informar opções de pagamento
-        window.location = '/success'
-        
+        router.push({pathname: '/success'})
+    
         axios.post('api/checkout_sessions', { cartItem })
             .then(res => {
                 console.log(res)
-                window.location = res.data.sessionURL
+                router.push({pathname:  res.data.sessionURL})
+    
+                
             })
             .catch(err => console.log(err))
     }
