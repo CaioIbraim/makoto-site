@@ -5,6 +5,7 @@ import { useRecoilState } from 'recoil'
 import {useState, useEffect} from 'react'
 import { cartState } from '../atoms/cartState'
 import CartList2 from '../components/CartList2'
+import Navbar from "../components/Navbar"
 
 const Finalizar = () => {
     const router = useRouter()
@@ -49,7 +50,8 @@ const Finalizar = () => {
     return (
         <div>
 
-        
+<Navbar />
+           
    
     <div className="h-screen grid grid-cols-3">
         <div className="lg:col-span-2 col-span-3 bg-indigo-50 space-y-8 px-12">
