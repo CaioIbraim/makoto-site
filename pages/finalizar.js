@@ -2,13 +2,15 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import axios from "axios"
 import { useRecoilState } from 'recoil'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import { cartState } from '../atoms/cartState'
 import CartList2 from '../components/CartList2'
 
 const Finalizar = () => {
     const router = useRouter()
     const [cartItem, setCartItem] = useRecoilState(cartState)
+    const [checkOut, setCheckOut] = useState(false)
+   
     const [frete, setFrete] = useState(0)
     const totalPrice = () => {
         let total = 0
@@ -18,9 +20,18 @@ const Finalizar = () => {
 
     //Se cartItem.length for igual a zero redireciona para a tela principal
 
-    if(cartItem.length == 0){
-        router.push({pathname: '/cart'})
-    }
+    useEffect(() => {
+        if(cartItem.length == 0){
+            router.push({pathname: '/cart'})
+        }
+    },[])
+
+    useEffect(() => {
+        if(checkOut == true){
+            router.push({pathname:  res.data.sessionURL})
+        }
+    },[])
+
 
     const createCheckoutSession = async () => {
         //Redirecionar para página de finalização de venda 
@@ -30,10 +41,7 @@ const Finalizar = () => {
     
         axios.post('api/checkout_sessions', { cartItem })
             .then(res => {
-                console.log(res)
-                router.push({pathname:  res.data.sessionURL})
-    
-                
+                setCheckOut(true)
             })
             .catch(err => console.log(err))
     }
