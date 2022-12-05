@@ -1,14 +1,12 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 import axios from "axios"
 import { useRecoilState } from 'recoil'
 import {useState} from 'react'
 import { cartState } from '../atoms/cartState'
 import CartList2 from '../components/CartList2'
 
-import Navbar from "../components/Navbar"
-import { useRouter } from 'next/router'
-
-const Cart = () => {
+const Finalizar = () => {
     const router = useRouter()
     const [cartItem, setCartItem] = useRecoilState(cartState)
     const [frete, setFrete] = useState(0)
@@ -42,9 +40,8 @@ const Cart = () => {
 
     return (
         <div>
-            <Navbar />
 
-
+        
    
     <div className="h-screen grid grid-cols-3">
         <div className="lg:col-span-2 col-span-3 bg-indigo-50 space-y-8 px-12">
@@ -87,40 +84,11 @@ const Cart = () => {
                                 <span className="text-right px-2">Estado</span>
                                 <input name="state" className="focus:outline-none px-3" placeholder="Digite seu Estado"/>
                             </label>
-                            <label className="xl:w-1/4 xl:inline-flex py-3 items-center flex xl:border-none border-t border-gray-200 py-3">
+                            <label className="xl:w-1/4 xl:inline-flex items-center flex xl:border-none border-t border-gray-200 py-3">
                                 <span className="text-right px-2 xl:px-0 xl:text-none">CEP</span>
                                 <input name="postal_code" className="focus:outline-none px-3" placeholder="Digite seu CEP"/>
                             </label>
-                            {/* <label className="flex border-t border-gray-200 h-12 py-3 items-center select relative">
-                                <span className="text-right px-2">País</span>
-                                <div id="country" className="focus:outline-none px-3 w-full flex items-center">
-                                    <select name="country" className="border-none bg-transparent flex-1 cursor-pointer appearance-none focus:outline-none">
-                                        <option value="AU">Australia</option>
-                                        <option value="BE">Belgium</option>
-                                        <option value="BR">Brazil</option>
-                                        <option value="CA">Canada</option>
-                                        <option value="CN">China</option>
-                                        <option value="DK">Denmark</option>
-                                        <option value="FI">Finland</option>
-                                        <option value="FR">France</option>
-                                        <option value="DE">Germany</option>
-                                        <option value="HK">Hong Kong</option>
-                                        <option value="IE">Ireland</option>
-                                        <option value="IT">Italy</option>
-                                        <option value="JP">Japan</option>
-                                        <option value="LU">Luxembourg</option>
-                                        <option value="MX">Mexico</option>
-                                        <option value="NL">Netherlands</option>
-                                        <option value="PL">Poland</option>
-                                        <option value="PT">Portugal</option>
-                                        <option value="SG">Singapore</option>
-                                        <option value="ES">Spain</option>
-                                        <option value="TN">Tunisia</option>
-                                        <option value="GB">United Kingdom</option>
-                                        <option value="US" selected="selected">United States</option>
-                                    </select>
-                                </div>
-                            </label> */}
+                        
                         </fieldset>
                     </section>
                 </form>
@@ -194,4 +162,4 @@ const Cart = () => {
     )
 }
 
-export default Cart
+export default Finalizar

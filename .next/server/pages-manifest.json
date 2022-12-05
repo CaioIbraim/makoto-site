@@ -1,8 +1,8 @@
 {
   "/_app": "pages/_app.js",
+  "/_error": "pages/_error.js",
   "/api/checkout_sessions": "pages/api/checkout_sessions.js",
   "/api/hello": "pages/api/hello.js",
-  "/blank": "pages/blank.js",
   "/cadastro": "pages/cadastro.js",
   "/cart": "pages/cart.js",
   "/finalizar": "pages/finalizar.js",
@@ -12,6 +12,5 @@
   "/sobre": "pages/sobre.js",
   "/success": "pages/success.js",
   "/produto/[id]": "pages/produto/[id].js",
-  "/_error": "pages/_error.js",
   "/_document": "pages/_document.js"
 }
