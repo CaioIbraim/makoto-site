@@ -5,58 +5,61 @@ import { useRecoilState } from 'recoil'
 import { cartState } from '../atoms/cartState'
 import Image from 'next/image'
 import Breadcrumb from './Breadcrumb'
+import { useState } from "react";
+
+
 const Navbar = () => {
 
     const [cartItem] = useRecoilState(cartState)
+    const [active, setActive] = useState(false);
+
+    const handleClick = () => {
+      setActive(!active);
+    };
+  
 
     return (
             <>
-            <nav className="relative
-                                w-full
-                                flex flex-wrap
-                                items-center
-                                justify-between
-                                py-4
-                                bg-white
-                                text-gray-500
-                                hover:text-gray-700
-                                focus:text-gray-700
-                                shadow-lg
-                                navbar navbar-expand-lg navbar-light
-                                ">
-            <div className="container-fluid w-full flex flex-wrap items-center justify-between px-6">
-                <Link href="/">
+            
+
+        <nav className="flex items-center flex-wrap bg-gray-400 p-3 ">
+        <Link href="/">
                     <Image src="/logo.jpeg" className="rounded-full cursor-pointer " width="50" height="50"/>
                 </Link>
                 
-                
-                <div className="collapse navbar-collapse flex-grow items-center" id="navbarSupportedContent">
-                    <a className="flex  items-center
-                                    text-gray-900
-                                    hover:text-gray-900
-                                    focus:text-gray-900
-                                    mt-2
-                                    lg:mt-0
-                                    mr-1" href="#">
-
-                        <img src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png" alt="" width={100} height={100}  loading="lazy" />
-                    </a>
-                    <ul className="navbar-nav flex flex-col pl-0 list-style-none mr-auto">
-                        <li className="nav-item p-2">
-                            <a className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">Dashboard</a>
-                        </li>
-                        <li className="nav-item p-2">
-                            <a className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">Team</a>
-                        </li>
-                        <li className="nav-item p-2">
-                            <a className="nav-link text-gray-500 hover:text-gray-700 focus:text-gray-700 p-0" href="#">Projects</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <div className="flex items-center relative">
-                        
-                        <Link href="/cart">
+        <button
+          className=" inline-flex p-3 hover:bg-gray-600 rounded lg:hidden text-white ml-auto hover:text-white outline-none"
+          onClick={handleClick}
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+        {/*Note that in this div we will use a ternary operator to decide whether or not to display the content of the div  */}
+        <div
+          className={`${
+            active ? "" : "hidden"
+          }   w-full lg:inline-flex lg:flex-grow lg:w-auto`}
+        >
+          <div className="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto">
+           
+            <Link href="/sobre">
+              <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-green-600 hover:text-white">
+                Sobre
+              </a>
+            </Link>
+            <Link href="/cart">
                             <div className="mr-10 cursor-pointer">         
                                 <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart"
                                     className="w-4" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -69,84 +72,9 @@ const Navbar = () => {
                                 <span className="text-white bg-red-700 absolute rounded-full text-xs -mt-2.5 ml-2 py-0 px-1.5">{cartItem.length}</span>
                             </div>
                         </Link>
-
-                    <div className="dropdown relative">
-                        <a className="dropdown-toggle flex items-center hidden-arrow" href="/perfil" id="dropdownMenuButton2" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="https://mdbootstrap.com/img/new/avatars/2.jpg" className="rounded-full" alt="" width="25" height="25" loading="lazy" />
-                        </a>
-                        <ul className=" dropdown-menu
-                                        min-w-max
-                                        absolute
-                                        hidden
-                                        bg-white
-                                        text-base
-                                        z-50
-                                        float-left
-                                        py-2
-                                        list-none
-                                        text-left
-                                        rounded-lg
-                                        shadow-lg
-                                        mt-1
-                                        hidden
-                                        m-0
-                                        bg-clip-padding
-                                        border-none
-                                        left-auto
-                                        right-0
-                                    " aria-labelledby="dropdownMenuButton2">
-                            <li>
-                                <a className="
-        dropdown-item
-        text-sm
-        py-2
-        px-4
-        font-normal
-        block
-        w-full
-        whitespace-nowrap
-        bg-transparent
-        text-gray-700
-        hover:bg-gray-100
-      " href="#">Action</a>
-                            </li>
-                            <li>
-                                <a className="
-        dropdown-item
-        text-sm
-        py-2
-        px-4
-        font-normal
-        block
-        w-full
-        whitespace-nowrap
-        bg-transparent
-        text-gray-700
-        hover:bg-gray-100
-      " href="#">Another action</a>
-                            </li>
-                            <li>
-                                <a className="
-        dropdown-item
-        text-sm
-        py-2
-        px-4
-        font-normal
-        block
-        w-full
-        whitespace-nowrap
-        bg-transparent
-        text-gray-700
-        hover:bg-gray-100
-      " href="#">Something else here</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
-
+          </div>
+        </div>
+      </nav>
 
         </>
     )
