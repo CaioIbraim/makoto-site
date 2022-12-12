@@ -3,6 +3,8 @@ import Navbar from '../components/Navbar'
 import Carousel from '../components/Carousel'
 import Product from '../components/Product'
 import data from "../data.json"
+import Slider from '../components/Slider';
+import { SliderData } from '../components/SliderData';
 
 export default function Home() {
   return (
@@ -26,13 +28,8 @@ export default function Home() {
       </Head>
 
       <Navbar />
-
-      <div
-          class="w-full h-96 bg-[url('/b3.jpg')] bg-cover bg-center flex justify-center items-center">
-          <div class="flex flex-col justify-center items-center">
-             
-          </div>
-      </div>
+      <Slider slides={SliderData} />
+    
       {/* <Carousel/> */}
 
 

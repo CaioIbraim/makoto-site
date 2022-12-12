@@ -6,6 +6,6 @@
 
 @layer base {
     body{
-        @apply font-Poppins bg-[#dddddd];
+        @apply font-Poppins;
     }
 }
