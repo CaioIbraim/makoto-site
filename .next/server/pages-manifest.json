@@ -2,7 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
   "/cadastro": "pages/cadastro.js",
-  "/login": "pages/login.js"
+  "/login": "pages/login.js",
+  "/": "pages/index.js",
+  "/finalizar": "pages/finalizar.js"
 }

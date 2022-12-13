@@ -1,4 +1,5 @@
 import React from 'react'
+import Head from 'next/head'
 import { useRouter } from 'next/router'
 import axios from "axios"
 import { useRecoilState } from 'recoil'
@@ -50,7 +51,27 @@ const Finalizar = () => {
     return (
         <div>
 
-<Navbar />
+
+<Head>
+        <title>Finalizar Carrinho</title>
+        <meta name="description" content="A makoto Sportswears é uma empresa
+                    que está no mercado desde 2016
+                    comprometida em garantir produtos de
+                    qualidade, que conferem conforto e
+                    exclusividade para as equipes e atletas
+                    de todo o mundo.
+                    Os patches, nosso produto destaque,
+                    são feitos de poliprene, material exclusivo
+                    da Makoto. Ele foi criado visando a
+                    comodidade e nos movimentos realizados
+                    pelos atletas.
+                    Eles são maleáveis, resistentes,
+                    não desfiam e nem desbotam." />
+        <link rel="icon" href="/logo.jpeg" />
+      </Head>
+     
+
+    <Navbar />
            
    
     <div className="h-screen grid grid-cols-3">

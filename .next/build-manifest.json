@@ -35,6 +35,11 @@
       "static/chunks/main.js",
       "static/chunks/pages/cadastro.js"
     ],
+    "/finalizar": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/finalizar.js"
+    ],
     "/login": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
