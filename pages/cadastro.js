@@ -37,32 +37,32 @@ export default function Cadastro() {
 
         <p className="mb-5 text-3xl uppercase text-gray-600">Cadastre-se </p>
         
-            <div className="flex mb-5 p-3 w-80 focus:border-purple-700 rounded border-2 outline-none">
+            <div className="flex mb-5 p-3 w-80 focus:border-red-700 rounded border-2 outline-none">
                 <FaUser /> 
                 <input type="text" name="nome" className="ml-2"  placeholder="Digite seu nome" required/>
             </div>
 
 
 
-            <div className="flex mb-5 p-3 w-80 focus:border-purple-700 rounded border-2 outline-none">
+            <div className="flex mb-5 p-3 w-80 focus:border-red-700 rounded border-2 outline-none">
                 <FaMailBulk /> 
                 <input type="email" name="email" className="ml-2"  placeholder="Digite seu E-mail" required/>
             </div>
 
         
-            <div className="flex mb-5 p-3 w-80 focus:border-purple-700 rounded border-2 outline-none">
+            <div className="flex mb-5 p-3 w-80 focus:border-red-700 rounded border-2 outline-none">
                 <FaLock /> 
                 <input type="password" name="password" className="ml-2"  placeholder="Senha" required/>
             </div>
 
 
-            <div className="flex mb-5 p-3 w-80 focus:border-purple-700 rounded border-2 outline-none">
+            <div className="flex mb-5 p-3 w-80 focus:border-red-700 rounded border-2 outline-none">
                 <FaLock /> 
                 <input type="password" name="confPassword" className="ml-2"  placeholder="Confirmar senha" required/>
             </div>
 
            
-          <button className="bg-purple-600 hover:bg-purple-900 text-white font-bold p-2 rounded w-80" id="login" type="submit"><span>Cadastrar</span></button>
+          <button className="bg-red-600 hover:bg-red-900 text-white font-bold p-2 rounded w-80" id="login" type="submit"><span>Cadastrar</span></button>
         </div>
       </div>
 

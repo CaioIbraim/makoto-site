@@ -1,13 +1,26 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Login() {
   return (
     <div>
       <Head>
-        <title>Tela de Login</title>
-        <meta name="description" content="Pedenoapp.com" />
-        <link rel="icon" href="/favicon.ico" />
+        <title>Entrar</title>
+        <meta name="description" content="A makoto Sportswears é uma empresa
+                    que está no mercado desde 2016
+                    comprometida em garantir produtos de
+                    qualidade, que conferem conforto e
+                    exclusividade para as equipes e atletas
+                    de todo o mundo.
+                    Os patches, nosso produto destaque,
+                    são feitos de poliprene, material exclusivo
+                    da Makoto. Ele foi criado visando a
+                    comodidade e nos movimentos realizados
+                    pelos atletas.
+                    Eles são maleáveis, resistentes,
+                    não desfiam e nem desbotam." />
+        <link rel="icon" href="/logo.jpeg" />
       </Head>
       
     
@@ -16,19 +29,28 @@ export default function Login() {
           <Image src="/logo.jpeg" width="100" height="100"/>
 
           <p className="mb-5 text-3xl uppercase text-gray-600">Entrar</p>
-          <input type="email" name="email" className="mb-5 p-3 w-80 focus:border-purple-700 rounded border-2 outline-none"  placeholder="Email" required/>
-          <input type="password" name="password" className="mb-5 p-3 w-80 focus:border-purple-700 rounded border-2 outline-none"  placeholder="Password" required/>
+          <input type="email" name="email" className="mb-5 p-3 w-80 focus:border-red-700 rounded border-2 outline-none"  placeholder="Email" required/>
+          <input type="password" name="password" className="mb-5 p-3 w-80 focus:border-red-700 rounded border-2 outline-none"  placeholder="Password" required/>
 
           <div className="flex items-left w-full">
-            <input type="checkbox" name="remember" className="mb-5 mt-2  p-3 focus:border-purple-700 rounded border-2 outline-none"  required/>
+            <input type="checkbox" name="remember" className="mb-5 mt-2  p-3 focus:border-red-700 rounded border-2 outline-none"  required/>
             
-            <span className="ml-2">
-               Lembrar senha?
-            </span>
+            <div className="flex justify-between">
+              <span className="ml-2">
+                Lembrar senha?
+              </span>
+
+              <Link href="cadastro" >
+                <span className="ml-2 text-red-600 cursor-pointer">
+                  Cadastre-se
+                </span>
+              </Link>
+
+            </div>
 
           </div>
           
-          <button className="bg-purple-600 hover:bg-purple-900 text-white font-bold p-2 rounded w-80" id="login" type="submit"><span>Entrar</span></button>
+          <button className="bg-red-600 hover:bg-red-900 text-white font-bold p-2 rounded w-80" id="login" type="submit"><span>Entrar</span></button>
         </div>
       </div>
 

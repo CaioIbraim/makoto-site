@@ -34,11 +34,13 @@ export default function Home() {
 
 
     <div className="flex">
-
-     
-      <section className='w-10/12 container mx-auto md:p-20'>
-        <h1 className='text-4xl mt-4 text-center uppercase bg-slate-100 p-10'>Nossos Produtos</h1>
-        <div className='mt-4 grid grid-cols-1 md:grid-cols-4 gap-4'>
+      <section className='w-10/12  mx-auto md:p-10'>
+        <div className="pt-3 pb-5">
+          <span className="text-slate-400">#Pacotes e Promoções</span>
+          <h1 className='text-1xl md:text-4xl mt-2 text-left uppercase  text-slate-800'>Nossos Produtos</h1>
+        </div>
+      
+        <div className='mt-2 grid grid-cols-2 md:grid-cols-4 gap-4'>
 
           {data.map(product => <Product product={product} />)}
          

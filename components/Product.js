@@ -3,7 +3,6 @@ import { useRecoilState } from 'recoil';
 import { cartState } from "../atoms/cartState"
 import toast from 'react-hot-toast';
 import Link from 'next/link'
-import {FaArrowAltCircleRight} from 'react-icons/fa';
 import { useRouter } from 'next/router'
 
 
@@ -23,31 +22,24 @@ const Product = ({ product }) => {
                 })
             })
         }
-
-        
-        
         toast(`${product.name} Adicionado ao carrinho`)
         router.push({pathname: '/cart'})
-    
-    
     }
 
     return (
-
-        <div className='bg-red-300 p-2  shadow-2xl cursor-pointer'>
-
-            <div className='bg-gray-100 p-2'>
+        <div className='shadow-1xl cursor-pointer'>
+            <div className='bg-gray-100 p-1 md:p-2'>
                 <Link href= {`/produto/${product.id}`}>    
-                    <img className='mx-auto w-[350px] h-[200px] object-contain' src={product.image} alt="" />
+                    <img className='md:mx-auto md:w-[350px] md:h-[200px] object-contain' src={product.image} alt="" />
                 </Link>
-                <div className='mt-4 px-6'>
-                    <div className='text-center text-[26px]'>
-                        <h1 className="text-2xl">{product.name}</h1>
-                        <small className='text-1xl'>{product.price.toLocaleString('en-US', {  style: 'currency',  currency: 'BRL',})}</small>
+                <div className='md:mt-4 md:px-6'>
+                    <div className='text-center md:text-[26px]'>
+                        <h1 className="md:text-2xl">{product.name}</h1>
+                        <small className='md:text-1xl'>{product.price.toLocaleString('en-US', {  style: 'currency',  currency: 'BRL',})}</small>
                     </div>
 
                     <button
-                        className='bg-red-600 text-white py-4 px-12 mt-4 block mx-auto hover:bg-red-800'
+                        className='bg-red-600 rounded-md text-white p-2 md:py-4 md:px-12 md:mt-4 block mx-auto hover:bg-red-800'
                         onClick={addItemsToCart}>Por no carrinho</button>
 
                 </div>
