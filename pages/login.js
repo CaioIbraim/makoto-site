@@ -1,8 +1,48 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Auth, ThemeSupa } from '@supabase/auth-ui-react'
+import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
+import { useEffect, useState } from 'react'
+
+
 
 export default function Login() {
+
+
+  const supabaseClient = useSupabaseClient()
+  const user = useUser()
+  const [data, setData] = useState()
+
+  useEffect(() => {
+    async function loadData() {
+      const { data } = await supabaseClient.from('test').select('*')
+      setData(data)
+    }
+    // Only run query once user is logged in.
+    if (user) loadData()
+  }, [user])
+
+  if (!user)
+    return (
+      <div className="w-screen h-screen flex justify-center items-center bg-gray-100">
+        <div className="p-10 bg-white rounded flex justify-center items-center flex-col shadow-md">
+        <Image src="/logo.jpeg" width="100" height="100"/>
+
+          <Auth
+            redirectTo="http://localhost:3000/"
+            appearance={{ theme: ThemeSupa }}
+            supabaseClient={supabaseClient}
+            providers={['google', 'github']}
+            socialLayout="horizontal"
+          />
+        </div>
+      </div>
+      
+    )
+
+
+
   return (
     <div>
       <Head>
@@ -22,38 +62,7 @@ export default function Login() {
                     não desfiam e nem desbotam." />
         <link rel="icon" href="/logo.jpeg" />
       </Head>
-      
     
-      <div className="w-screen h-screen flex justify-center items-center bg-gray-100">
-        <div className="p-10 bg-white rounded flex justify-center items-center flex-col shadow-md">
-          <Image src="/logo.jpeg" width="100" height="100"/>
-
-          <p className="mb-5 text-3xl uppercase text-gray-600">Entrar</p>
-          <input type="email" name="email" className="mb-5 p-3 w-80 focus:border-red-700 rounded border-2 outline-none"  placeholder="Email" required/>
-          <input type="password" name="password" className="mb-5 p-3 w-80 focus:border-red-700 rounded border-2 outline-none"  placeholder="Password" required/>
-
-          <div className="flex items-left w-full">
-            <input type="checkbox" name="remember" className="mb-5 mt-2  p-3 focus:border-red-700 rounded border-2 outline-none"  required/>
-            
-            <div className="flex justify-between">
-              <span className="ml-2">
-                Lembrar senha?
-              </span>
-
-              <Link href="cadastro" >
-                <span className="ml-2 text-red-600 cursor-pointer">
-                  Cadastre-se
-                </span>
-              </Link>
-
-            </div>
-
-          </div>
-          
-          <button className="bg-red-600 hover:bg-red-900 text-white font-bold p-2 rounded w-80" id="login" type="submit"><span>Entrar</span></button>
-        </div>
-      </div>
-
     </div>
   )
 }
