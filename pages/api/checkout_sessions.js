@@ -7,12 +7,12 @@ export default async function handler(req, res) {
 
         const transformedItems = items.map((item) => ({
             price_data: {
-                currency: "usd",
+                currency: "BRL",
                 product_data: {
-                    name: item.name,
-                    images: [req.headers.origin+item.image],
+                    name: item.title,
+                    images: [req.headers.origin+item.img_url],
                 },
-                unit_amount: item.price * 100,
+                unit_amount: parseInt(item.price) * 100,
             },
             quantity: item.quantity,
         }))
