@@ -1,0 +1,123 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model banner {
+  id_banner Int     @id @default(autoincrement()) @db.SmallInt
+  titulo    String  @db.VarChar(60)
+  img_url   String? @db.VarChar(120)
+  conteudo  String
+  link_pg   String? @db.VarChar(300)
+  btn_txt   String? @db.VarChar(11)
+  status    Int
+}
+
+model categoria {
+  id_categoria Int    @id @default(autoincrement()) @db.SmallInt
+  name         String @db.VarChar(60)
+  title        String @db.VarChar(200)
+  description  String
+}
+
+model produto {
+  id_produto   Int      @id @default(autoincrement()) @db.SmallInt
+  id_usuario   Int      @db.SmallInt
+  id_categoria Int?     @db.SmallInt
+  title        String   @db.VarChar(64)
+  img_url      String   @db.VarChar(200)
+  price        Float
+  stock        Int?
+  description  String?
+  tags         String?  @db.VarChar(200)
+  link         String?  @db.VarChar(200)
+  status       Boolean?
+
+  @@index([id_categoria], map: "id_categoria")
+  @@index([id_usuario], map: "id_usuario")
+}
+
+model tipo_usuario {
+  id_tipo_usuario BigInt @id @default(autoincrement())
+  nome            String @db.VarChar(255)
+}
+
+model transacoes {
+  id_transacao BigInt   @id @default(autoincrement())
+  fk_usuario   BigInt
+  fk_evento    BigInt
+  valor        Float
+  status       String   @db.Char(255)
+  desconto     Float?
+  modeda       String   @db.VarChar(3)
+  created_at   DateTime @default(now()) @db.Timestamp(0)
+  updated_at   DateTime @default(now()) @db.Timestamp(0)
+
+  @@index([fk_evento], map: "transacoes_fk_evento_foreign")
+  @@index([fk_usuario], map: "transacoes_fk_usuario_foreign")
+}
+
+model usuario {
+  id_usuario                 BigInt    @id @default(autoincrement())
+  fk_tipo_usuario            BigInt?
+  nome                       String    @db.VarChar(255)
+  apelido                    String?   @db.VarChar(255)
+  email                      String    @unique(map: "usuario_email_unique")
+  senha                      String?   @db.VarChar(255)
+  sexo                       String?   @db.VarChar(255)
+  avatar                     String?   @db.VarChar(255)
+  documento                  String?   @db.VarChar(255)
+  nascimento                 DateTime? @db.Date
+  tipo_sanguineno            String?   @db.VarChar(255)
+  telefone                   String?   @db.VarChar(255)
+  celular                    String?   @db.VarChar(255)
+  cep                        String?   @db.VarChar(255)
+  endereco                   String?   @db.VarChar(255)
+  numero                     String?   @db.VarChar(255)
+  bairro                     String?   @db.VarChar(255)
+  estado                     String?   @db.VarChar(255)
+  cidade                     String?   @db.VarChar(255)
+  email_confirmado           Boolean?
+  token_confirma_email       String?   @db.VarChar(255)
+  token_expira               DateTime? @db.Date
+  oauth_provider             String?   @db.VarChar(255)
+  oauth_id                   String?   @db.VarChar(255)
+  status                     String?   @db.Char(255)
+  instagram                  String?   @db.VarChar(255)
+  facebook                   String?   @db.VarChar(255)
+  twiter                     String?   @db.VarChar(255)
+  linkedIn                   String?   @db.VarChar(255)
+  permite_notificacoes       Boolean?
+  permite_contatos_pesquisas Boolean?
+  como_conheceu              String?
+  created_at                 DateTime  @default(now()) @db.Timestamp(0)
+  updated_at                 DateTime  @default(now()) @db.Timestamp(0)
+
+  @@index([fk_tipo_usuario], map: "usuario_fk_tipo_usuario_foreign")
+}
+
+model vendas {
+  id_venda         Int      @id @default(autoincrement()) @db.SmallInt
+  id_produto       Int?     @db.SmallInt
+  id_evento        BigInt?
+  id_login         Int      @db.SmallInt
+  data_solicitacao DateTime @default(now()) @db.Timestamptz(6)
+  data_de_entrega  DateTime @db.Date
+  qtd              Int
+  fm_pagamento     String   @db.VarChar(50)
+  comprovante      String?  @db.VarChar(255)
+  status           Int
+
+  @@index([id_login], map: "id_login")
+  @@index([id_produto], map: "id_produto")
+}
+
+enum login_oauth_provider {
+  facebook
+  google
+  twitter
+}

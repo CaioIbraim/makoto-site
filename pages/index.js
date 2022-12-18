@@ -1,12 +1,23 @@
 import Head from 'next/head'
 import Navbar from '../components/Navbar'
-import Carousel from '../components/Carousel'
 import Product from '../components/Product'
-import data from "../data.json"
 import Slider from '../components/Slider';
 import { SliderData } from '../components/SliderData';
+import { PrismaClient } from '@prisma/client'
 
-export default function Home() {
+const prisma = new PrismaClient()
+
+export async function getServerSideProps(){
+  const produtos = await prisma.produto.findMany()
+  return {  
+    props:{
+      produtos : produtos
+    }
+  }
+}
+
+
+export default function Home({ produtos }) {
   return (
     <div>
       <Head>
@@ -39,20 +50,13 @@ export default function Home() {
           <span className="text-slate-400">#Pacotes e Promoções</span>
           <h1 className='text-1xl md:text-4xl mt-2 text-left uppercase  text-slate-800'>Nossos Produtos</h1>
         </div>
-      
+       
         <div className='mt-2 grid grid-cols-2 md:grid-cols-4 gap-4'>
 
-          {data.map(product => <Product product={product} />)}
-         
+          {produtos.map(product => <Product product={product} />)}
         </div>
       </section>
     </div>
-
-     
-
-
-     
-
     </div>
   )
 }

@@ -12,11 +12,10 @@ const CartList2 = ({ data }) => {
     data.map(item => 
         <li className="grid grid-cols-6 gap-2 border-b-1">
         <div className="col-span-1 self-center">
-            <img src={item.image} alt="Product" className="rounded w-full"/>
+            <img src={item.img_url} alt="Product" className="rounded w-full"/>
         </div>
         <div className="flex flex-col col-span-3 pt-2">
-            <span className="text-gray-600 text-md font-semi-bold">{item.name}</span>
-            <span className="text-gray-400 text-sm inline-block pt-2">Kit Básico</span>
+            <span className="text-gray-600 text-md font-semi-bold">{item.title}</span>
         </div>
         <div className="col-span-2 pt-3">
             <div className="flex items-center space-x-2 text-sm justify-between">
