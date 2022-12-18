@@ -7,6 +7,10 @@ import {useState, useEffect} from 'react'
 import { cartState } from '../atoms/cartState'
 import CartList2 from '../components/CartList2'
 import Navbar from "../components/Navbar"
+import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
+
+import Image from 'next/image'
+import { Auth, ThemeSupa } from '@supabase/auth-ui-react'
 
 const Finalizar = () => {
     const router = useRouter()
@@ -47,6 +51,63 @@ const Finalizar = () => {
             })
             .catch(err => console.log(err))
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    const supabaseClient = useSupabaseClient()
+    const user = useUser()
+    const [data, setData] = useState()
+  
+    useEffect(() => {
+      async function loadData() {
+        const { data } = await supabaseClient.from('test').select('*')
+        setData(data)
+      }
+      // Only run query once user is logged in.
+      if (user) loadData()
+    }, [user])
+  
+  
+    if (!user)
+    return (
+      <div className="w-screen h-screen flex justify-center items-center bg-gray-100">
+        <div className="p-10 bg-white rounded flex justify-center items-center flex-col shadow-md">
+        <Image src="/logo.jpeg" width="100" height="100"/>
+            Realize seu login para finalizar suas compras
+          <Auth
+            redirectTo="http://localhost:3000/"
+            appearance={{ theme: ThemeSupa }}
+            supabaseClient={supabaseClient}
+            providers={['google']}
+            socialLayout="horizontal"
+          />
+        </div>
+      </div>
+      
+    )
+  
+  
+  
+  
+
+
+
+
 
     return (
         <div>
@@ -97,11 +158,11 @@ const Finalizar = () => {
                         <fieldset className="mb-3 bg-white shadow-lg rounded text-gray-600">
                             <label className="flex border-b border-gray-200 h-12 py-3 items-center">
                                 <span className="text-right px-2">Nome</span>
-                                <input name="name" className="focus:outline-none px-3" placeholder="Digite seu nome completo" required=""/>
+                                <input name="name" className="focus:outline-none px-3" placeholder="Digite seu nome completo" required="" value={user.user_metadata.name}/>
                             </label>
                             <label className="flex border-b border-gray-200 h-12 py-3 items-center">
                                 <span className="text-right px-2">Email</span>
-                                <input name="email" type="email" className="focus:outline-none px-3" placeholder="Digite seu Email" required=""/>
+                                <input name="email" type="email" className="focus:outline-none px-3 w-full" placeholder="Digite seu Email" required="" value={user.user_metadata.email}/>
                             </label>
                             <label className="flex border-b border-gray-200 h-12 py-3 items-center">
                                 <span className="text-right px-2">Endereço</span>

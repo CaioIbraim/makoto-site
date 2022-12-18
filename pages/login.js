@@ -5,10 +5,7 @@ import { Auth, ThemeSupa } from '@supabase/auth-ui-react'
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { useEffect, useState } from 'react'
 
-
-
 export default function Login() {
-
 
   const supabaseClient = useSupabaseClient()
   const user = useUser()
@@ -33,7 +30,7 @@ export default function Login() {
             redirectTo="http://localhost:3000/"
             appearance={{ theme: ThemeSupa }}
             supabaseClient={supabaseClient}
-            providers={['google', 'github']}
+            providers={['google']}
             socialLayout="horizontal"
           />
         </div>
@@ -62,7 +59,34 @@ export default function Login() {
                     não desfiam e nem desbotam." />
         <link rel="icon" href="/logo.jpeg" />
       </Head>
-    
+      <>
+
+      <div className='h-screen grid place-items-center'>
+
+<div className='text-center'>
+
+
+
+  <Link href="/">
+      <Image src="/logo.jpeg" className="cursor-pointer" width="150" height="150"/>
+  </Link>
+
+
+  <h1 className='text-4xl font-bold uppercase mt-5  '>Bem-vindo {user.user_metadata.name}!</h1>
+  <div className='flex'>  
+    <img src={user.user_metadata.avatar_url} className="rounded-full" width="50" height="50"/>
+    {user.user_metadata.email}    
+  </div>  
+  <Link href="/">
+    <p className='bg-red-600 text-white py-4 px-12 mt-4 hover:bg-red-800 cursor-pointer'>Ir para a loja</p>
+  </Link>
+  <button onClick={() => supabaseClient.auth.signOut()} className='bg-red-600 text-white py-4 px-12 mt-4 hover:bg-red-800 cursor-pointer'>Sair</button>
+</div>
+
+</div>
+
+
+      </>
     </div>
   )
 }

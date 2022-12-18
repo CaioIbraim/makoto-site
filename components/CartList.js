@@ -7,8 +7,11 @@ import { useRouter } from 'next/router'
 
 
 const CartList = ({ data }) => {
-  const { id, name, image, quantity, price } = data
+  const { id_produto, title, img_url, quantity, price } = data
   const [cartItem, setCartItem] = useRecoilState(cartState)
+
+  console.log(quantity)
+
   const index = cartItem.findIndex((cartItem) => cartItem === data);
    const router = useRouter()
 
@@ -16,7 +19,7 @@ const CartList = ({ data }) => {
   const addItemsToCart = () => {
     setCartItem(prevState => {
         return prevState.map((item) => {
-            return item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+            return item.id_produto === id_produto ? { ...item, quantity: item.quantity + 1 } : item
         })
     })
   }
@@ -31,14 +34,14 @@ const CartList = ({ data }) => {
   const rmItemsToCart = () => {
     setCartItem(prevState => {
         return prevState.map((item) => {
-            if(((item.quantity -1)  == 0) &&  (item.id === id)){ 
+            if(((item.quantity -1)  == 0) &&  (item.id_produto === id_produto)){ 
               //removar produto do carrinho
                 
-              toast(`${item.name} removido do carrinho`)
+              toast(`${item.title} removido do carrinho`)
               
               return 0
             }
-            return item.id === id ? { ...item, quantity:   ((item.quantity - 1) > 0 ? item.quantity - 1 : 0 )  } : item
+            return item.id_produto === id_produto ? { ...item, quantity:   ((item.quantity - 1) > 0 ? item.quantity - 1 : 0 )  } : item
         })
     })
   }
@@ -46,16 +49,16 @@ const CartList = ({ data }) => {
 
   return (
       <>
-      {quantity > 0 ? 
+    {quantity > 0 ? 
     <div className="container p-2">
 
       
 
       <div className='bg-[#fff] max-w-[800px] mx-auto mt-4 py-2 px-6 flex gap-6 items-center justify-between'>
-        <img className='h-[80px]' src={image} alt="" />
+        <img className='h-[80px]' src={img_url} alt="" />
 
         <div>
-          <div className='font-bold text-1xl'>{name}</div>
+          <div className='font-bold text-1xl'>{title}</div>
           <div className='flex p-2'>
           
           {quantity} x {price.toLocaleString('en-US', {  style: 'currency',  currency: 'BRL',})}
