@@ -32,22 +32,16 @@ const Finalizar = () => {
         }
     },[])
 
-    useEffect(() => {
-        if(checkOut == true){
-            router.push({pathname:  res.data.sessionURL})
-        }
-    },[])
 
 
     const createCheckoutSession = async () => {
         //Redirecionar para página de finalização de venda 
         //Capturar dados de entrega, calcular frete de entrega
         //Informar opções de pagamento
-        router.push({pathname: '/success'})
-    
+       
         axios.post('api/checkout_sessions', { cartItem })
             .then(res => {
-                setCheckOut(true)
+                router.push({pathname:  res.data.sessionURL})
             })
             .catch(err => console.log(err))
     }
