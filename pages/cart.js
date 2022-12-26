@@ -31,7 +31,7 @@ const Cart = () => {
                 <h1 className='text-center text-4xl mt-32'>Carrinho</h1>
                 {cartItem.length <= 0
                     ? <h1 className='text-center text-4xl mt-32'>Nenhum produto adicionado</h1>
-                    : cartItem.map(item => <CartList key={item.id} data={item} />)}
+                    : cartItem.map(item => <CartList key={item.id_produto} data={item} />)}
                 {cartItem.length > 0 && (
                 <div className='max-w-[800px] mx-auto mt-4'>
                     <h2 className='text-right text-1xl font-bold p-2 mr-2'>Total: {totalPrice()}</h2>

@@ -6,7 +6,9 @@ const Footer = () => {
 
 
     return (
-        <footer className="text-center lg:text-left bg-gray-100 text-gray-600 mt-5">
+      <>
+      
+        <footer className="text-center lg:text-left bg-gray-100 text-gray-600 mt-200 pt-20">
         <div className="flex justify-center items-center lg:justify-between p-6 border-b border-gray-300">
           <div className="mr-12 hidden lg:block">
             <span>Nos siga em nossas redes sociais:</span>
@@ -131,6 +133,7 @@ const Footer = () => {
           </Link>
         </div>
       </footer>
+      </>
     )
 }
 
