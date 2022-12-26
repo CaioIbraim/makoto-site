@@ -3,11 +3,48 @@ import Navbar from '../components/Navbar'
 import Product from '../components/Product'
 import Slider from '../components/Slider';
 import { SliderData } from '../components/SliderData';
-import produtos from "../data.json"
+import { supabase } from '../supabase'
+import { useEffect, useState } from 'react'
 
 
 
 export default function Home() {
+
+
+  const [loading, setLoading] = useState(true)
+  const [produtos, setProdutos] = useState([])
+ 
+  
+  useEffect(() => {
+      getProfile()
+  }, [loading])
+
+
+
+  const getProfile = async () => {
+    try {
+      setLoading(true)
+    
+      let { data, error, status } = await supabase
+        .from('produto')
+        .select(`*`)
+       
+      if (error && status !== 406) {
+        throw error
+      }
+
+      setProdutos(data)
+      
+    } catch (error) {
+      alert(error.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+
+
+  
   return (
     <div>
       <Head>

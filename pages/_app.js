@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }) {
   <RecoilRoot>
       <Toaster position='bottom-center' />
       <Component {...pageProps} />
-      {/* <Footer/> */}
+      <Footer/>
     </RecoilRoot>
   </SessionContextProvider>)
 

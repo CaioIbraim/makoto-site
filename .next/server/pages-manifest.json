@@ -2,5 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/perfil": "pages/perfil.js"
+  "/sobre": "pages/sobre.js",
+  "/cart": "pages/cart.js",
+  "/": "pages/index.js"
 }
