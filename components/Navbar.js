@@ -1,17 +1,25 @@
 import Link from 'next/link'
 import React from 'react'
 import { FiShoppingCart } from "react-icons/fi"
-import { useRecoilState } from 'recoil'
-import { cartState } from '../atoms/cartState'
 import Image from 'next/image'
 import Breadcrumb from './Breadcrumb'
 import { useState, useEffect } from "react";
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
-
+import { useSelector } from 'react-redux';
 
 const Navbar = () => {
 
-    const [cartItem] = useRecoilState(cartState)
+
+  
+  // Selecting cart from global state
+  const cart = useSelector((state) => state.cart);
+
+  // Getting the count of items
+  const getItemsCount = () => {
+    return cart.reduce((accumulator, item) => accumulator + item.quantity, 0);
+  };
+
+
     const [active, setActive] = useState(false);
 
     const supabaseClient = useSupabaseClient()
@@ -74,7 +82,7 @@ const Navbar = () => {
                   
 
 
-                  <Link href="/cart" className="lg:inline-flex lg:w-auto w-full px-3 text-white py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white">
+                  <Link href="/carrinho" className="lg:inline-flex lg:w-auto w-full px-3 text-white py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white">
                         <div className="mr-10 cursor-pointer">         
                             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart"
                                 className="w-4 text-white" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +92,7 @@ const Navbar = () => {
                                 </path>
                             </svg>
 
-                            <span className="text-white bg-red-700 absolute rounded-full text-xs -mt-2.5 ml-2 py-0 px-1.5">{cartItem.length}</span>
+                            <span className="text-white bg-red-700 absolute rounded-full text-xs -mt-2.5 ml-2 py-0 px-1.5">{getItemsCount()}</span>
                         </div>
                     </Link>
 
@@ -146,7 +154,7 @@ const Navbar = () => {
                   
 
 
-                  <Link href="/cart" className="lg:inline-flex lg:w-auto w-full px-3 text-white py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white">
+                  <Link href="/carrinho" className="lg:inline-flex lg:w-auto w-full px-3 text-white py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white">
                         <div className="mr-10 cursor-pointer">         
                             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart"
                                 className="w-4 text-white" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -156,7 +164,7 @@ const Navbar = () => {
                                 </path>
                             </svg>
 
-                            <span className="text-white bg-red-700 absolute rounded-full text-xs -mt-2.5 ml-2 py-0 px-1.5">{cartItem.length}</span>
+                            <span className="text-white bg-red-700 absolute rounded-full text-xs -mt-2.5 ml-2 py-0 px-1.5">{getItemsCount()}</span>
                         </div>
                     </Link>
 

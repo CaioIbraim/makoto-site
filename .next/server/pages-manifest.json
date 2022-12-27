@@ -2,7 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/sobre": "pages/sobre.js",
-  "/cart": "pages/cart.js",
-  "/": "pages/index.js"
+  "/": "pages/index.js",
+  "/finalizar": "pages/finalizar.js",
+  "/carrinho": "pages/carrinho.js"
 }

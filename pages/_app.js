@@ -1,10 +1,12 @@
+import { Provider } from 'react-redux';
 import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs'
 import { SessionContextProvider } from '@supabase/auth-helpers-react'
 import '../styles/globals.css'
-import { RecoilRoot } from "recoil"
 import { Toaster } from 'react-hot-toast'
 import Footer from '../components/Footer'
 import {useState} from 'react'
+import store from '../redux/store';
+
 
 function MyApp({ Component, pageProps }) {
   // Create a new supabase browser client on every first render.
@@ -15,11 +17,11 @@ function MyApp({ Component, pageProps }) {
   supabaseClient={supabaseClient}
   initialSession={pageProps.initialSession}
   >
-  <RecoilRoot>
-      <Toaster position='bottom-center' />
+    <Provider store={store}>
+    <Toaster position='bottom-center' />
       <Component {...pageProps} />
       <Footer/>
-    </RecoilRoot>
+    </Provider>
   </SessionContextProvider>)
 
 }

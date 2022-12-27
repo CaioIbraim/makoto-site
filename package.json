@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@prisma/client": "^4.7.1",
+    "@reduxjs/toolkit": "^1.9.1",
     "@stripe/stripe-js": "^1.42.0",
     "@supabase/auth-helpers-nextjs": "^0.5.2",
     "@supabase/auth-helpers-react": "^0.3.1",
@@ -21,6 +22,7 @@
     "react-dom": "18.2.0",
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.6.0",
+    "react-redux": "^8.0.5",
     "recoil": "^0.7.6",
     "stripe": "^10.15.0"
   },

@@ -31,13 +31,9 @@ const Perfil = () => {
   const [cidade, setCidade] = useState('');
 
 
-
-
-
-
   useEffect(() => {
     async function loadData() {
-      const { data } = await supabaseClient.from('test').select('*')
+      const { data } = await supabaseClient.from('usuario').select('*')
       setData(data)
       setNome(user.user_metadata.name)
       setEmail(user.user_metadata.email)
