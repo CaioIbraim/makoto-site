@@ -1,21 +1,6 @@
 {
-  "/_error": "pages/_error.js",
-  "/carrinho": "pages/carrinho.html",
-  "/api/hello": "pages/api/hello.js",
-  "/finalizar": "pages/finalizar.html",
-  "/": "pages/index.html",
-  "/api/checkout_sessions": "pages/api/checkout_sessions.js",
-  "/pedidos": "pages/pedidos.html",
   "/_app": "pages/_app.js",
-  "/login": "pages/login.html",
-  "/perfil": "pages/perfil.html",
-  "/cadastro": "pages/cadastro.html",
-  "/politica": "pages/politica.html",
-  "/termos": "pages/termos.html",
-  "/sobre": "pages/sobre.html",
-  "/success": "pages/success.html",
-  "/pedidos/[id]": "pages/pedidos/[id].js",
-  "/produto/[id]": "pages/produto/[id].js",
+  "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/404": "pages/404.html"
+  "/finalizar": "pages/finalizar.js"
 }

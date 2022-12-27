@@ -8,7 +8,7 @@ import Navbar from "../components/Navbar"
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { useSelector, useDispatch } from 'react-redux';
 import { supabase } from '../supabase'
-
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 import Image from 'next/image'
 import { Auth, ThemeSupa } from '@supabase/auth-ui-react'
@@ -38,6 +38,8 @@ const Finalizar = () => {
     const dispatch = useDispatch();
 
 
+
+   
     const totalPrice = () => {
         return cart.reduce(
             (accumulator, item) => accumulator + item.quantity * item.price,
@@ -204,11 +206,30 @@ const Finalizar = () => {
                             </fieldset>
                         </section>
                     </div> */}
+                   <PayPalScriptProvider options={{ "client-id": "test" }}>
+            <PayPalButtons
+                createOrder={(data, actions) => {
+                    return actions.order.create({
+                        purchase_units: [
+                            {
+                                amount: {
+                                    value: (totalPrice() + frete)
+                                },
+                            },
+                        ],
+                    });
+                }}
+                onApprove={(data, actions) => {
+                    return actions.order.capture().then((details) => {
+                        const name = details.payer.name.given_name;
+                        alert(`Transaction completed by ${name}`);
+                    });
+                }}
+            />
+        </PayPalScriptProvider>
 
 
-                    <button onClick={handleCadastrar} className="submit-button px-4 py-3  bg-red-600 text-white focus:ring focus:outline-none w-full text-xl font-semibold transition-colors">
-                        {(totalPrice() + frete).toLocaleString('en-US', { style: 'currency', currency: 'BRL', })}
-                    </button>
+                  
                 </div>
 
 

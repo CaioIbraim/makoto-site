@@ -73,9 +73,8 @@ const Pedidos = () => {
         ) : (
           <>
 
-<h2 className="text-left m-5 text-3xl">Total de pedidos registrados : {dadosVenda.length}</h2>
+          <h2 className="text-left m-5 text-3xl">Total de pedidos registrados : {dadosVenda.length}</h2>
          
-          
             <div className={styles.header}>
               <div>#ID</div>
               <div>Data da Compra</div>
