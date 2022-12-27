@@ -69,76 +69,75 @@ const Perfil = () => {
 
 
 
-    const getProfile = async () => {
-      try {
-        setLoading(true)
-      
-        let { data, error, status } = await supabase
-          .from('usuario')
-          .select(`*`)
-          .eq('email', user.user_metadata.email)
-          .single()
-  
-        if (error && status !== 406) {
-          throw error
-        }
-  
-        if (data) {
-           setId(data.id_usuario)
-           setNome(data.nome)
-           setApelido(data.apelido)
-           setEmail(data.email)
-           setSexo(data.sexo)
-           setDocumento(data.documento)
-           setTelefone(data.telefone)
-           setNascimento(data.nascimento)
-           setEndereco(data.endereco)
-           setCep(data.cep)
-           setNumero(data.numero)
-           setEstado(data.estado)
-           setBairro(data.bairro)
-           setCidade(data.cidade)
-        }
-      } catch (error) {
-        alert(error.message)
-      } finally {
-        setLoading(false)
+  const getProfile = async () => {
+    try {
+      setLoading(true)
+    
+      let { data, error, status } = await supabase
+        .from('usuario')
+        .select(`*`)
+        .eq('email', user.user_metadata.email)
+        .single()
+
+      if (error && status !== 406) {
+        throw error
       }
+
+      if (data) {
+          setId(data.id_usuario)
+          setNome(data.nome)
+          setApelido(data.apelido)
+          setEmail(data.email)
+          setSexo(data.sexo)
+          setDocumento(data.documento)
+          setTelefone(data.telefone)
+          setNascimento(data.nascimento)
+          setEndereco(data.endereco)
+          setCep(data.cep)
+          setNumero(data.numero)
+          setEstado(data.estado)
+          setBairro(data.bairro)
+          setCidade(data.cidade)
+      }
+    } catch (error) {
+      alert(error.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+
+  const  handleCadastrar = async () => {
+    try {
+      setLoading(true)
+    const dados = {
+      oauth_id: user.id,
+      nome:nome,
+      apelido:apelido,
+      email:email,
+      sexo:sexo,
+      documento:documento,
+      telefone:telefone,
+      nascimento:nascimento,
+      endereco:endereco,
+      cep:cep,
+      numero:numero,
+      estado:estado,
+      bairro:bairro,
+      cidade:cidade    
     }
 
-  
+    const { data, error } = await supabase
+    .from('usuario')
+    .insert([dados], { upsert: true })
 
-    const  handleCadastrar = async () => {
-      try {
-        setLoading(true)
-      const dados = {
-        oauth_id: user.id,
-        nome:nome,
-        apelido:apelido,
-        email:email,
-        sexo:sexo,
-        documento:documento,
-        telefone:telefone,
-        nascimento:nascimento,
-        endereco:endereco,
-        cep:cep,
-        numero:numero,
-        estado:estado,
-        bairro:bairro,
-        cidade:cidade    
-      }
-
-      const { data, error } = await supabase
-      .from('usuario')
-      .insert([dados], { upsert: true })
-
-      } catch (error) {
-        alert(error.message)
-      } finally {
-        setLoading(false)
-      }
-
+    } catch (error) {
+      alert(error.message)
+    } finally {
+      setLoading(false)
     }
+
+  }
 
 
   const  handleAtualizar = async () => {
@@ -288,6 +287,8 @@ const Perfil = () => {
 
     </>
   )
+
+
 }
 
 export default Perfil
