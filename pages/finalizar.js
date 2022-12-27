@@ -60,7 +60,7 @@ const Finalizar = () => {
     }
 
     const handleCadastrar = async () => {
-        dispatch( cleanCart())
+        dispatch( cleanCart(cart))
 
         //Utilizar esta função após ser realizado o pagamento da encomenda
         // try {

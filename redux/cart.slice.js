@@ -30,8 +30,8 @@ const cartSlice = createSlice({
       state.splice(index, 1);
     },
     cleanCart: (state) => {
-      const index = state.map((item) => item.id_produto );
-      state.splice(index, 1);
+      const index = state.map((item) => state.splice(item.id_produto, 1)  );
+      
     }
   },
 });
