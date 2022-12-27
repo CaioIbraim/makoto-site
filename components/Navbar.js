@@ -82,7 +82,7 @@ const Navbar = () => {
                   
 
 
-                  <Link href="/carrinho" className="lg:inline-flex lg:w-auto w-full px-3 text-white py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white">
+                  <Link href="   inho" className="lg:inline-flex lg:w-auto w-full px-3 text-white py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white">
                         <div className="mr-10 cursor-pointer">         
                             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart"
                                 className="w-4 text-white" role="img" xmlns="http://www.w3.org/2000/svg"

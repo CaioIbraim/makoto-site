@@ -1,15 +1,14 @@
 import React from 'react'
 import Navbar from "../../components/Navbar"
-import { useRecoilState } from 'recoil';
-import { cartState } from "../../atoms/cartState"
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/router'
 import { supabase } from '../../supabase'
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../redux/cart.slice';
 
 
 export async function getStaticProps(context) {
    const id = context.params.id
-  
     try {
      
         let { data, error, status } = await supabase
@@ -21,20 +20,17 @@ export async function getStaticProps(context) {
         if (error && status !== 406) {
         throw error
         }
-
         return { props : { id : id, produto : data } }
         
     } catch (error) {
         console.log(error.message)
     } 
-
    
   }
 
   export async function getStaticPaths() {
     // Instead of fetching your `/api` route you can call the same
     // function directly in `getStaticProps`
-
 
         let { data, error, status } = await supabase
         .from('produto')
@@ -49,10 +45,8 @@ export async function getStaticProps(context) {
         const paths = data.map(prod =>({
             params: {id: prod.id_produto.toString() },
         }))
-
         // Props returned will be passed to the page component
         return {  paths , fallback: false }
-
   }
 
 
@@ -60,30 +54,13 @@ export async function getStaticProps(context) {
 
 const Produto = (props) => {
     const router = useRouter()
+    const dispatch = useDispatch()
    
-
-    const [cartItem, setCartItem] = useRecoilState(cartState)
-   
-
-
     const addItemsToCart = () => {
-
-        if (cartItem.findIndex(pro => parseInt(pro.id_produto)  === parseInt(props.id) ) === -1) {
-            setCartItem(prevState => [...prevState, props.produto])
-        } else {
-            setCartItem(prevState => {
-                return prevState.map((item) => {
-                    return parseInt(item.id_produto) === parseInt(props.id) ? { ...item, quantity: item.quantity + 1 } : item
-                })
-            })
-        }
-
-        router.push({pathname: '/cart'})
-
+        dispatch(addToCart(props.produto))
+        router.push({pathname: '/carrinho'})
         toast(`${props.produto.title} Adicionado ao carrinho`)
     }
-
-
 
     return (
         <div>

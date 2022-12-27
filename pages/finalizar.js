@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import axios from "axios"
 import { useState, useEffect } from 'react'
-import CartList2 from '../components/CartList2'
+import CartList from '../components/CartList'
 import Navbar from "../components/Navbar"
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { useSelector, useDispatch } from 'react-redux';
@@ -226,7 +226,7 @@ const Finalizar = () => {
 
                     {cart.length <= 0
                         ? <h1 className='text-center text-4xl mt-32'>Nenhum produto adicionado</h1>
-                        : <CartList2 data={cart} />}
+                        : <CartList data={cart} />}
 
 
 

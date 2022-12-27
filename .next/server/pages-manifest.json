@@ -1,8 +1,19 @@
 {
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
+  "/api/checkout_sessions": "pages/api/checkout_sessions.js",
+  "/api/hello": "pages/api/hello.js",
+  "/cadastro": "pages/cadastro.html",
+  "/carrinho": "pages/carrinho.html",
+  "/finalizar": "pages/finalizar.html",
+  "/login": "pages/login.html",
+  "/politica": "pages/politica.html",
+  "/sobre": "pages/sobre.html",
+  "/": "pages/index.html",
+  "/perfil": "pages/perfil.html",
+  "/success": "pages/success.html",
+  "/termos": "pages/termos.html",
+  "/produto/[id]": "pages/produto/[id].js",
   "/_document": "pages/_document.js",
-  "/finalizar": "pages/finalizar.js",
-  "/": "pages/index.js",
-  "/carrinho": "pages/carrinho.js"
+  "/404": "pages/404.html"
 }

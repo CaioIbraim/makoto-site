@@ -1,93 +1,39 @@
 import React from 'react'
-import {useEffect} from 'react'
-import { useRecoilState   } from 'recoil';
-import { cartState } from "../atoms/cartState"
-import toast from 'react-hot-toast';
-import { useRouter } from 'next/router'
-
 
 const CartList = ({ data }) => {
-  const { id_produto, title, img_url, quantity, price } = data
-  const [cartItem, setCartItem] = useRecoilState(cartState)
-
-  console.log(quantity)
-
-  const index = cartItem.findIndex((cartItem) => cartItem === data);
-   const router = useRouter()
-
-   
-  const addItemsToCart = () => {
-    setCartItem(prevState => {
-        return prevState.map((item) => {
-            return item.id_produto === id_produto ? { ...item, quantity: item.quantity + 1 } : item
-        })
-    })
-  }
-
-
-
-  const removeItem = () => () => {
-    const itemIndex = cartItem.findIndex((e) => e === data);
-    setCartItem([]);
-  };
-
-  const rmItemsToCart = () => {
-    setCartItem(prevState => {
-        return prevState.map((item) => {
-            if(((item.quantity -1)  == 0) &&  (item.id_produto === id_produto)){ 
-              //removar produto do carrinho
-                
-              toast(`${item.title} removido do carrinho`)
-              
-              return 0
-            }
-            return item.id_produto === id_produto ? { ...item, quantity:   ((item.quantity - 1) > 0 ? item.quantity - 1 : 0 )  } : item
-        })
-    })
-  }
-
+  const { name, image, quantity, price } = data
 
   return (
-      <>
-    {quantity > 0 ? 
-    <div className="container p-2">
-
-      
-
-      <div className='bg-[#fff] max-w-[800px] mx-auto mt-4 py-2 px-6 flex gap-6 items-center justify-between'>
-        <img className='h-[80px]' src={img_url} alt="" />
-
-        <div>
-          <div className='font-bold text-1xl'>{title}</div>
-          <div className='flex p-2'>
-          
-          {quantity} x {price.toLocaleString('en-US', {  style: 'currency',  currency: 'BRL',})}
-          
-          </div>
-        
-          <div className='flex space-x-5'>
-          <div className='text-indigo-600 p-3 bg-indigo-300 rounded-full cursor-pointer' onClick={rmItemsToCart}> -  1</div>
-          
-          <div className='text-indigo-600 p-3 bg-indigo-300 rounded-full cursor-pointer' onClick={addItemsToCart}> +  1</div>
-        
-        
-          </div>
-          
+    <>
+    <ul className="py-6 border-b space-y-6 px-8">
+    
+    {
+    
+    data.map(item => 
+        <li className="grid grid-cols-6 gap-2 border-b-1">
+        <div className="col-span-1 self-center">
+            <img src={item.img_url} alt="Product" className="rounded w-full"/>
         </div>
-
-        <div className='text-1xl font-bold'>{(price * quantity).toLocaleString('en-US', {  style: 'currency',  currency: 'BRL',})}</div>
-      </div>
-
-    </div>
-    : null
+        <div className="flex flex-col col-span-3 pt-2">
+            <span className="text-gray-600 text-md font-semi-bold">{item.title}</span>
+        </div>
+        <div className="col-span-2 pt-3">
+            <div className="flex items-center space-x-2 text-sm justify-between">
+                <span className="text-gray-400">{item.quantity} x {item.price}</span>
+                <span className="text-indigo-400 font-semibold inline-block">{(item.price * item.quantity).toLocaleString('en-US', {  style: 'currency',  currency: 'BRL',})}</span>
+            </div>
+        </div>
+    </li>
+    )
+    
+    
     }
-    </>
+                
+    
+</ul>
+
+</>
   )
 }
 
 export default CartList
-
-
-function removeItemAtIndex(arr, index) {
-  return [...arr.slice(0, index), ...arr.slice(index + 1)];
-}
