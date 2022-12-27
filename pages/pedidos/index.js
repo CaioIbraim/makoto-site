@@ -64,7 +64,7 @@ const Pedidos = () => {
 
     <>
       <Navbar />
-
+      <h1 className="text-center m-5 text-3xl">Meus pedidos </h1>
       <div className={styles.container}>
         {(dadosVenda == undefined || dadosVenda.length == 0) ? (
           
@@ -72,6 +72,10 @@ const Pedidos = () => {
           Não encontramos nenhum pedido para o seu usuário {dadosUsuario.nome}</h1>
         ) : (
           <>
+
+<h2 className="text-left m-5 text-3xl">Total de pedidos registrados : {dadosVenda.length}</h2>
+         
+          
             <div className={styles.header}>
               <div>#ID</div>
               <div>Data da Compra</div>

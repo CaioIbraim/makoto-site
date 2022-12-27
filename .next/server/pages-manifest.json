@@ -3,6 +3,7 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/": "pages/index.js",
-  "/pedidos/[id]": "pages/pedidos/[id].js",
-  "/pedidos": "pages/pedidos.js"
+  "/carrinho": "pages/carrinho.js",
+  "/pedidos": "pages/pedidos.js",
+  "/finalizar": "pages/finalizar.js"
 }
