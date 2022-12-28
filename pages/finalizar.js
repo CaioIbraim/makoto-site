@@ -5,6 +5,7 @@ import axios from "axios"
 import { useState, useEffect } from 'react'
 import CartList from '../components/CartList'
 import Navbar from "../components/Navbar"
+
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { useSelector, useDispatch } from 'react-redux';
 import { supabase } from '../supabase'
@@ -17,6 +18,12 @@ import { Auth, ThemeSupa } from '@supabase/auth-ui-react'
 import {
     cleanCart,
 } from '../redux/cart.slice';
+
+
+import {
+    BraintreePayPalButtons,
+} from "@paypal/react-paypal-js";
+
 
 
 const Finalizar = () => {
@@ -39,7 +46,7 @@ const Finalizar = () => {
 
 
 
-   
+
     const totalPrice = () => {
         return cart.reduce(
             (accumulator, item) => accumulator + item.quantity * item.price,
@@ -55,14 +62,14 @@ const Finalizar = () => {
 
         axios.post('api/checkout_sessions', { cart })
             .then(res => {
-                
+
                 router.push({ pathname: res.data.sessionURL })
             })
             .catch(err => console.log(err))
     }
 
     const handleCadastrar = async () => {
-        dispatch( cleanCart(cart))
+        dispatch(cleanCart(cart))
 
         //Utilizar esta função após ser realizado o pagamento da encomenda
         // try {
@@ -206,30 +213,35 @@ const Finalizar = () => {
                             </fieldset>
                         </section>
                     </div> */}
-                   <PayPalScriptProvider options={{ "client-id": "test" }}>
-            <PayPalButtons
-                createOrder={(data, actions) => {
-                    return actions.order.create({
-                        purchase_units: [
-                            {
-                                amount: {
-                                    value: (totalPrice() + frete)
-                                },
-                            },
-                        ],
-                    });
-                }}
-                onApprove={(data, actions) => {
-                    return actions.order.capture().then((details) => {
-                        const name = details.payer.name.given_name;
-                        alert(`Transaction completed by ${name}`);
-                    });
-                }}
-            />
-        </PayPalScriptProvider>
 
 
-                  
+
+
+                    <div className="text-center">
+                        <PayPalScriptProvider options={{ "client-id": "AUa4ae6NFHkh3KOrsNClZj0czw5o0KMBLhol2qbvbkqw02mwicRTYcOZ7rc6tvx8ic3qNh4bntP1ayoL" }}>
+                            <PayPalButtons
+                                createOrder={(data, actions) => {
+                                    return actions.order.create({
+                                        purchase_units: [
+                                            {
+                                                amount: {
+                                                    value: (totalPrice() + frete),
+                                                }
+                                            },
+                                        ],
+                                    });
+                                }}
+                                onApprove={(data, actions) => {
+                                    return actions.order.capture().then((details) => {
+                                        const name = details.payer.name.given_name;
+                                        alert(`Transaction completed by ${name}`);
+                                    });
+                                }}
+                            />
+                        </PayPalScriptProvider>
+
+                    </div>
+
                 </div>
 
 

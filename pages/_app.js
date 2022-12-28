@@ -7,6 +7,7 @@ import Footer from '../components/Footer'
 import {useState} from 'react'
 import store from '../redux/store';
 
+import { PersistGate } from 'redux-persist/integration/react'
 
 function MyApp({ Component, pageProps }) {
   // Create a new supabase browser client on every first render.
@@ -18,9 +19,9 @@ function MyApp({ Component, pageProps }) {
   initialSession={pageProps.initialSession}
   >
     <Provider store={store}>
-    <Toaster position='bottom-center' />
-      <Component {...pageProps} />
-      <Footer/>
+        <Toaster position='bottom-center' />
+        <Component {...pageProps} />
+        <Footer/>
     </Provider>
   </SessionContextProvider>)
 
