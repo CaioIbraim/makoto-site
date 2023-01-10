@@ -30,15 +30,25 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/carrinho": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/carrinho.js"
-    ],
     "/finalizar": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/finalizar.js"
+    ],
+    "/pedidos": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/pedidos.js"
+    ],
+    "/pedidos/[id]": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/pedidos/[id].js"
+    ],
+    "/success": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/success.js"
     ]
   },
   "ampFirstPages": []

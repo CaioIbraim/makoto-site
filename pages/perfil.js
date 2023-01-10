@@ -12,19 +12,19 @@ const Perfil = () => {
 
   const supabaseClient = useSupabaseClient()
   const user = useUser()
-  const [data, setData] = useState()
+  const [data, setData]       = useState()
   const [loading, setLoading] = useState(true)
   
-  const [id, setId] = useState(null);
-  const [nome, setNome] = useState('');
+  const [id, setId]           = useState(null);
+  const [nome, setNome]       = useState('');
   const [apelido, setApelido] = useState('');
-  const [email, setEmail] = useState('');
-  const [sexo, setSexo] = useState('');
-  const [documento, setDocumento] = useState('');
-  const [telefone, setTelefone] = useState('');
+  const [email, setEmail]     = useState('');
+  const [sexo, setSexo]       = useState('');
+  const [documento, setDocumento]   = useState('');
+  const [telefone, setTelefone]     = useState('');
   const [nascimento, setNascimento] = useState('');
-  const [endereco, setEndereco] = useState('');
-  const [cep, setCep] = useState('');
+  const [endereco, setEndereco]     = useState('');
+  const [cep, setCep]       = useState('');
   const [numero, setNumero] = useState('');
   const [estado, setEstado] = useState('');
   const [bairro, setBairro] = useState('');

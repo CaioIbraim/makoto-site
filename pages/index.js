@@ -67,19 +67,14 @@ export default function Home() {
 
       <Navbar />
       <Slider slides={SliderData} />
-    
-      {/* <Carousel/> */}
-
 
     <div className="flex">
       <section className='w-10/12  mx-auto md:p-10'>
         <div className="pt-3 pb-5">
           <span className="text-slate-400">#Pacotes e Promoções</span>
           <h1 className='text-1xl md:text-4xl mt-2 text-left uppercase  text-slate-800'>Nossos Produtos</h1>
-        </div>
-       
+        </div>       
         <div className='mt-2 grid grid-cols-2 md:grid-cols-4 gap-4'>
-
           {produtos.map(product => <Product product={product} />)}
         </div>
       </section>
