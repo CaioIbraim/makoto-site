@@ -2,9 +2,5 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/pedidos/[id]": "pages/pedidos/[id].js",
-  "/": "pages/index.js",
-  "/success": "pages/success.js",
-  "/finalizar": "pages/finalizar.js",
-  "/pedidos": "pages/pedidos.js"
+  "/": "pages/index.js"
 }
