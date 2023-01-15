@@ -12,7 +12,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true)
   const [produtos, setProdutos] = useState([])
   const [statusPage, setStatusPage] = useState(false)
-  const [produtosLoaded, setProdutosLoaded] = useState(false)
+  const [produtosLoaded, setProdutosLoaded] = useState(true)
   
   useEffect(() => {
       getProdutos()
