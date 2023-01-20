@@ -5,12 +5,11 @@ import { useRouter } from 'next/router'
 import { supabase } from '../../supabase'
 import { useDispatch } from 'react-redux';
 import CartListDetails from '../../components/CartListDetails'
-
+import Link  from 'next/link'
 
 export async function getStaticProps(context) {
    const id = context.params.id
-    try {
-        
+    try {        
        let { data , error, status } = await supabase
         .from('venda_produtos')
         .select(`
@@ -19,15 +18,10 @@ export async function getStaticProps(context) {
             valor,
             produto(id_produto,*)
         `).eq('id_venda',id)
-
-
         if (error && status !== 406) {
-        throw error
+            throw error
         }
-
-        console.log(data)
-        return { props : {  produto : data } }
-        
+        return { props : {  produto : data } }        
     } catch (error) {
         return error.message
     } 
@@ -65,11 +59,18 @@ const Produto = (props) => {
 
     return (
         <div>
-            <Navbar />
-
-            <h1 className="text-center m-5 text-3xl">Detalhes do pedido </h1>
+            <section className='w-10/12  mx-auto md:p-10'>
+                <div className="pt-3 pb-5">
+                    <div className="flex justify-between">
+                        <span className="text-slate-400">#Pedidos</span>
+                        <Link href={`/pedidos`} className="cursor-pointer">
+                            <span className="text-slate-400 cursor-pointer">Voltar</span>
+                        </Link>    
+                    </div>
+                    <h1 className='text-1xl md:text-4xl mt-2 text-left uppercase  text-slate-800'>Detalhes do pedido</h1>
+                </div> 
             <CartListDetails data={props.produto} />
-
+            </section>
         </div>
     )
 }

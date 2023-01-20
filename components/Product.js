@@ -14,14 +14,14 @@ const Product = ({ product }) => {
 
     return (
         <div className='shadow-1xl cursor-pointer'>
-            <div className='bg-gray-100 p-1 md:p-2'>
+            <div className='bg-slate-50 p-1 md:p-2'>
                 <Link href= {`/produto/${product.id_produto}`}>    
-                    <img className='md:mx-auto md:w-[350px] md:h-[200px] object-contain' src={product.img_url} alt="" />
+                    <img className='md:mx-auto md:w-[350px] md:h-[200px] object-contain' src={`https://dmrufagccpgeyzmftmwj.supabase.co/storage/v1/object/public/arquivos/${product.img_url}`} alt="" />
                 </Link>
                 <div className='md:mt-4 md:px-6'>
-                    <div className='text-center md:text-[26px]'>
-                        <h1 className="md:text-2xl">{product.title}</h1>
-                        <small className='md:text-1xl'>{product.price.toLocaleString('en-US', {  style: 'currency',  currency: 'BRL',})}</small>
+                    <div className='md:text-[16px]'>
+                        <h1 className="md:text-1xl">{product.title}</h1>
+                        <small className='text-1xl'>{product.price.toLocaleString('en-US', {  style: 'currency',  currency: 'BRL',})}</small>
                     </div>
 
                     <button

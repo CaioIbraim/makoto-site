@@ -1,6 +1,5 @@
 import React from 'react'
 import CartList from '../components/CartListFull'
-import Navbar from "../components/Navbar"
 import { useRouter } from 'next/router'
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -21,8 +20,7 @@ const Cart = () => {
     
     return (
         <div>
-            <Navbar />
-            <div className='container mx-auto'>
+            <div className='container mx-auto p-3'>
                 <h1 className='text-center text-4xl mt-32'>Carrinho</h1>
                 {cart.length <= 0
                     ? <h1 className='text-center text-4xl mt-32'>Nenhum produto adicionado</h1>

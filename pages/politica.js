@@ -1,5 +1,4 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
 import Head from 'next/head'
 
 const Politica = () => {
@@ -26,8 +25,7 @@ const Politica = () => {
         <link rel="icon" href="/logo.jpeg" />
       </Head>
 
-      <Navbar />
-
+    
    
         <div className='h-screen grid place-items-center'>
 

@@ -23,20 +23,15 @@ export default function Cadastro() {
                     não desfiam e nem desbotam." />
         <link rel="icon" href="/logo.jpeg" />
       </Head>
-      
     
-
     
       <div className="w-screen h-screen flex justify-center items-center bg-gray-100">
-
-     
+ 
        
-        <div className="p-10 bg-white rounded flex justify-center items-center flex-col shadow-md">
-     
+        <div className="p-10 bg-white rounded flex justify-center items-center flex-col shadow-md">     
         <Image src="/logo.jpeg" width="100" height="100"/>
-
         <p className="mb-5 text-3xl uppercase text-gray-600">Cadastre-se </p>
-        
+      
             <div className="flex mb-5 p-3 w-80 focus:border-red-700 rounded border-2 outline-none">
                 <FaUser /> 
                 <input type="text" name="nome" className="ml-2"  placeholder="Digite seu nome" required/>

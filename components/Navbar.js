@@ -120,7 +120,7 @@ const Navbar = () => {
     return (
             <>
 
-                <nav className="flex items-center flex-wrap bg-gray-900 p-5 pl-5 pr-5">
+                <nav className="flex items-center flex-wrap bg-gray-900 p-5 pl-5 pr-5 ">
                 <Link href="/">
                   <Image src="/logo.jpeg" className="rounded-full cursor-pointer " width="50" height="50"/>
                 </Link>
@@ -150,12 +150,12 @@ const Navbar = () => {
                     active ? "" : "hidden"
                   }   w-full lg:inline-flex lg:flex-grow lg:w-auto`}
                 >
-                  <div className="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto justify-between">
+                  <div className="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto justify-between mt-8">
                   
 
 
-                  <Link href="/carrinho" className="lg:inline-flex lg:w-auto w-full px-3 text-white py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white">
-                        <div className="mr-10 cursor-pointer">         
+                  <Link href="/carrinho" className="border-2 mt-1 lg:inline-flex lg:w-auto w-full px-3 text-white py-3 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white">
+                        <div className="mr-10 py-2 cursor-pointer">         
                             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart"
                                 className="w-4 text-white" role="img" xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 576 512">
@@ -169,25 +169,25 @@ const Navbar = () => {
                     </Link>
 
                     <Link href="/sobre">
-                      <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white">
+                      <a className="border-2 md:border-none  mt-1 lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white">
                         Sobre
                       </a>
                     </Link>
 
 
                     <Link href="/pedidos">
-                      <a className="lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white">
+                      <a className="border-2  md:border-none mt-1 lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white">
                         Meus Pedidos
                       </a>
                     </Link>
 
-                      <a onClick={() => supabaseClient.auth.signOut()} className="cursor-pointer   lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white">
+                      <a onClick={() => supabaseClient.auth.signOut()} className=" border-2  md:border-none mt-1 cursor-pointer lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white">
                         Sair
                       </a>
                     
                   
-                    <Link href="/perfil" className="cursor-pointer lg:inline-flex lg:w-auto w-full px-3 text-white py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white">
-                      <Image src={user.user_metadata.avatar_url} className="rounded-full cursor-pointer" width="30" height="30"/>
+                    <Link href="/perfil" className=" border-2  md:border-none mt-1 cursor-pointer lg:inline-flex lg:w-auto w-full px-3 text-white py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white">
+                      <Image src={user.user_metadata.avatar_url} className="rounded-full cursor-pointer mt-1" width="30" height="30"/>
                     </Link>
                   
                   </div>

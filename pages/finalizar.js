@@ -4,7 +4,6 @@ import { useRouter } from 'next/router'
 import axios from "axios"
 import { useState, useEffect } from 'react'
 import CartList from '../components/CartList'
-import Navbar from "../components/Navbar"
 
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { useSelector, useDispatch } from 'react-redux';
@@ -255,9 +254,6 @@ const Finalizar = () => {
                         não desfiam e nem desbotam." />
                 <link rel="icon" href="/logo.jpeg" />
             </Head>
-
-
-            <Navbar />
 
             <div className="h-screen grid grid-cols-3">
                 <div className="lg:col-span-2 col-span-3 bg-indigo-50 space-y-8 px-12">

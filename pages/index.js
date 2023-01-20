@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Navbar from '../components/Navbar'
 import Product from '../components/Product'
 import Slider from '../components/Slider';
 import { SliderData } from '../components/SliderData';
@@ -80,8 +79,7 @@ export default function Home() {
         <link rel="icon" href="/logo.jpeg" />
       </Head>
 
-      <Navbar />
-
+   
 {statusPage == true ?
         <>
             <Slider slides={SliderData} />

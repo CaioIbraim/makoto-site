@@ -1,5 +1,4 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
 import Head from 'next/head'
 
 const Termos = () => {
@@ -26,9 +25,6 @@ const Termos = () => {
         <link rel="icon" href="/logo.jpeg" />
       </Head>
 
-      <Navbar />
-
-   
         <div className='h-screen grid place-items-center'>
 
         <div className='text-center  p-20 bg-gray-100 rounded-md'>

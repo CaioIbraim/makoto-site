@@ -64,12 +64,11 @@ const Produto = (props) => {
 
     return (
         <div>
-            <Navbar />
             <section className='container mx-auto md:p-20'>
                 <h1 className='text-2xl mt-4 text-center uppercase'>{props.produto.title}</h1>
                 <div className='mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 bg-gray-100'>
-                    <div className="w-1/2 p-10">
-                        <img className='mx-auto w-[350px] h-[200px] object-contain' src={props.produto.img_url} alt="" />
+                    <div className="w-full p-10">
+                        <img className='mx-auto  md:w-[350px] md:h-[200px] object-contain' src={`https://dmrufagccpgeyzmftmwj.supabase.co/storage/v1/object/public/arquivos/${props.produto.img_url}`} alt="" />
                     </div>
                     <div className="w-full p-10">
                     <h1 className='text-2xl mt-4 text-center uppercase'>{props.produto.price.toLocaleString('en-US', {  style: 'currency',  currency: 'BRL',})}</h1>

@@ -12,7 +12,8 @@ const CartListDetails = ({ data }) => {
     data.map(item => 
         <li className="grid grid-cols-6 gap-2 border-b-1">
         <div className="col-span-1 self-center">
-            <img src={item.produto.img_url} alt="Product" className="rounded w-full"/>
+            <img src={`https://dmrufagccpgeyzmftmwj.supabase.co/storage/v1/object/public/arquivos/${item.produto.img_url}`} alt="Product" className="rounded w-full"/>
+
         </div>
         <div className="flex flex-col col-span-3 pt-2">
             <span className="text-gray-600 text-md font-semi-bold">{item.produto.title}</span>

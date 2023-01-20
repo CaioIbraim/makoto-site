@@ -1,5 +1,4 @@
 import React from 'react'
-import Navbar from '../components/Navbar'
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
@@ -196,8 +195,7 @@ const Perfil = () => {
         <link rel="icon" href="/logo.jpeg" />
       </Head>
 
-      <Navbar />
-
+      
       {loading ? (
         <div className="p-5 w-full bg-gray-100 text-center tx-6-xs">  Carregando ... </div>
       ) : (

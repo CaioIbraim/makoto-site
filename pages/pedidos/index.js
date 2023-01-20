@@ -5,8 +5,9 @@ import { supabase } from '../../supabase'
 import { Auth, ThemeSupa } from '@supabase/auth-ui-react'
 import { useUser, useSupabaseClient } from '@supabase/auth-helpers-react'
 import { useEffect, useState } from 'react'
-import { formataStatus } from '../../utils/funcoes'
+import { formataStatus, formatarData} from '../../utils/funcoes'
 import Link  from 'next/link'
+
 
 const Pedidos = () => {
   const supabaseClient = useSupabaseClient()
@@ -63,44 +64,39 @@ const Pedidos = () => {
   return (
 
     <>
-      <Navbar />
-      <h1 className="text-center m-5 text-3xl">Meus pedidos </h1>
-      <div className={styles.container}>
+     <section className='w-10/12  mx-auto md:p-10'>
+      <div className="pt-3 pb-5">
+          <span className="text-slate-400">#Pedidos</span>
+          <h1 className='text-1xl md:text-4xl mt-2 text-left uppercase  text-slate-800'>Meus pedidos</h1>
+      </div> 
+       <div>
         {(dadosVenda == undefined || dadosVenda.length == 0) ? (
-          
-          <h1>       
-          Não encontramos nenhum pedido para o seu usuário {dadosUsuario.nome}</h1>
+           <h2 className="text-left m-5 text-1xl">Não encontramos nenhum pedido para o seu usuário {dadosUsuario.nome}</h2>
         ) : (
           <>
 
-          <h2 className="text-left m-5 text-3xl">Total de pedidos registrados : {dadosVenda.length}</h2>
+          <h2 className="text-left m-5 text-1xl">Total de pedidos registrados : {dadosVenda.length}</h2>
          
-            <div className={styles.header}>
-              <div>#ID</div>
-              <div>Data da Compra</div>
-              <div>Forma de pagamento</div>
-              <div>Endereço de entrega</div>
-              <div>Data da entrega</div>
-              <div>Quantidade de itens</div>
-              <div>Status</div>
-              <div>Total</div>
-              <div>Detalhes</div>
-            </div>
             {dadosVenda.map((item) => (
              
-                <div className={styles.body} >
+                <div className='shadow-1xl cursor-pointer p-3 border-2 m-3 rounded-md'>
                   
-                    <p>#{item.id_venda} </p>
-                    <p>{item.data_solicitacao}</p>
-                    <p>{item.fm_pagamento}</p>
-                    <p>{item.endereco_entrega}</p>
-                    <p>{item.data_de_entrega}</p>
-                    <p>{item.qtd}</p>
-                    <p>{formataStatus(item.status)}</p>
-                    <p>{(item.valor_total).toLocaleString('en-US', {  style: 'currency',  currency: 'BRL',})}</p>
+                    <p>#ID : {item.id_venda} </p>
+                    <p>Data da Compra: {formatarData(item.data_solicitacao)}</p>
+                    <p>Forma de pagamento: {item.fm_pagamento}</p>
+                    <p>Endereço de entrega: {item.endereco_entrega}</p>
+                    <p>Data da entrega: {item.data_de_entrega}</p>
+                    <p>Quantidade de itens: {item.qtd}</p>
+                    <p>Status: {formataStatus(item.status)}</p>
+                    <p>Valor total: {(item.valor_total).toLocaleString('en-US', {  style: 'currency',  currency: 'BRL',})}</p>
                     <p>
                       <Link href={`/pedidos/${item.id_venda}`} className="cursor-pointer">
-                        Visualizar
+                      <button
+                        className='bg-blue-600 w-full rounded-md text-white p-2 md:py-4 md:px-12 md:mt-4 block mx-auto hover:bg-red-800'
+                      >
+                        Visualizar itens
+                      </button>
+                        
                       </Link>
                     </p>
                     
@@ -111,7 +107,9 @@ const Pedidos = () => {
           </>
         )}
       </div>
-                
+      </section>
+
+           
     </>
   );
 };

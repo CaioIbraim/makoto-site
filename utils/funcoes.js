@@ -11,3 +11,10 @@ export const formataStatus = (status) => {
 
     return <span className="text-gray-600"> {texto}</span>
 }
+
+
+export const formatarData = (dataPassada) => {
+    let data = new Date(dataPassada);
+    let dataFormatada = ( (data.getDate() + 1) + "/" + ((data.getMonth() + 1)) + "/" + (data.getFullYear() ));
+    return dataFormatada                 
+}

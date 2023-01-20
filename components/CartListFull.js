@@ -26,7 +26,7 @@ const CartList = ({ data }) => {
       
 
       <div className='bg-[#fff] max-w-[800px] mx-auto mt-4 py-2 px-6 flex gap-6 items-center justify-between'>
-        <img className='h-[80px]' src={img_url} alt="" />
+        <img className='h-[80px]' src={`https://dmrufagccpgeyzmftmwj.supabase.co/storage/v1/object/public/arquivos/${img_url}`} alt="" />
 
         <div>
             <div className='font-bold text-1xl'>{title}</div>
