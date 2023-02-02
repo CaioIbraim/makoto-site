@@ -10,16 +10,21 @@ export default function Home() {
 
   const [loading, setLoading] = useState(true)
   const [produtos, setProdutos] = useState([])
+  const [banners, setBanners] = useState([])
+  
   const [statusPage, setStatusPage] = useState(false)
   const [produtosLoaded, setProdutosLoaded] = useState(true)
+  const [bannersLoaded, setBannersLoaded] = useState(true)
   
+
   useEffect(() => {
       getProdutos()
+      getBanners()
   }, [loading])
 
 
   const vrfStatusPage = () => {
-    if(produtosLoaded == true){
+    if(produtosLoaded == true && bannersLoaded == true){
       setStatusPage(true)
     }
   }
@@ -58,6 +63,28 @@ export default function Home() {
       vrfStatusPage() 
     }
   }
+
+
+  const getBanners = async () => {
+    try {
+      setStatusPage(false)    
+      let { data, error, status } = await supabase
+        .from('banner')
+        .select(`*`)       
+      if (error && status !== 406) {
+        throw error
+      }
+     
+
+      setBanners(data) 
+      setBannersLoaded(true)
+          
+    } catch (error) {
+      alert(error.message)
+    } finally {
+      vrfStatusPage() 
+    }
+  }
   
   return (
     <div>
@@ -80,9 +107,9 @@ export default function Home() {
       </Head>
 
    
-{statusPage == true ?
+{( (statusPage == true) && (banners.length > 0) )?
         <>
-            <Slider slides={SliderData} />
+            <Slider slides={banners} />
             <div className="flex">
               <section className='w-10/12  mx-auto md:p-10'>
                 

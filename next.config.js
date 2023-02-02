@@ -6,7 +6,8 @@ const nextConfig = {
     domains: [
       'images.unsplash.com',
       's3.amazonaws.com',
-      'lh3.googleusercontent.com'
+      'lh3.googleusercontent.com',
+      'dmrufagccpgeyzmftmwj.supabase.co'
     ],
   }
 }

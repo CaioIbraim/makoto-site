@@ -7,6 +7,7 @@ const Slider = ({ slides }) => {
   const [current, setCurrent] = useState(0);
   const length = slides.length;
 
+
   const nextSlide = () => {
     setCurrent(current === length - 1 ? 0 : current + 1);
   };
@@ -22,7 +23,8 @@ const Slider = ({ slides }) => {
     <div id='gallery' className='w-full mx-auto pt-0'>
       <div className='relative flex justify-center'>
 
-      {SliderData.map((slide, index) => {
+      {slides.map((slide, index) => {
+
         return (
           <div
             key={index}
@@ -34,21 +36,22 @@ const Slider = ({ slides }) => {
           >
               <FaArrowCircleLeft
                 onClick={prevSlide}
-                className='absolute top-[50%] left-[30px] text-white/70 cursor-pointer select-none z-[2]'
+                className='absolute top-[50%] left-[30px] text-black/70 cursor-pointer select-none z-[2]'
                 size={25}
               />
               {index === current && (
                 <Image
-                  src={slide.image}
-                  alt='/'
-                  width='2440'
-                  height='800'
-                  objectFit='cover'
-                />
+                src={`https://dmrufagccpgeyzmftmwj.supabase.co/storage/v1/object/public/arquivos/${slide.img_url}`}
+                alt='/'
+                width='2440'
+                height='800'
+                objectFit='cover'
+              />
+                
               )}
               <FaArrowCircleRight
                 onClick={nextSlide}
-                className='absolute top-[50%] right-[30px] text-white/70 cursor-pointer select-none z-[2]'
+                className='absolute top-[50%] right-[30px] text-black/70 cursor-pointer select-none z-[2]'
                 size={25}
               />
             </div>
