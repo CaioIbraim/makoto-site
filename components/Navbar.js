@@ -19,6 +19,10 @@ const Navbar = () => {
     return cart.reduce((accumulator, item) => accumulator + item.quantity, 0);
   };
 
+  const getItemsCartCount = () => {
+    return cart.length;
+  };
+
 
     const [active, setActive] = useState(false);
 
@@ -98,8 +102,8 @@ const Navbar = () => {
                       </a>
                     </Link>
 
-                    <Link href="/carrinho" className="border-2 md:border-none  mt-1 lg:inline-flex lg:w-auto w-full px-3 text-white py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white">
-                        <div className="mr-10 cursor-pointer">         
+                    <Link href="/carrinho" className="border-2 md:border-none mt-2 lg:inline-flex lg:w-auto w-full px-3 text-white py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white">
+                        <div className="mr-10 mt-2 cursor-pointer">         
                             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart"
                                 className="w-4 text-white" role="img" xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 576 512">
@@ -108,7 +112,7 @@ const Navbar = () => {
                                 </path>
                             </svg>
 
-                            <span className="text-white bg-red-700 absolute rounded-full text-xs -mt-2.5 ml-2 py-0 px-1.5">{getItemsCount()}</span>
+                            <span className="text-white bg-red-700 absolute rounded-full text-xs -mt-2.5 ml-2 py-0 px-1.5">{getItemsCartCount()}</span>
                         </div>
                     </Link>
 
@@ -177,7 +181,7 @@ const Navbar = () => {
                     </a>
                   
                   
-                    <Link href="/carrinho" className="border-2 mt-1 lg:inline-flex lg:w-auto w-full px-3 text-white py-3 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white">
+                    <Link href="/carrinho" className="border-2 mt-2 lg:inline-flex lg:w-auto w-full px-3 text-white py-3 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white">
                       <div className="mr-10 py-2 cursor-pointer">         
                           <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart"
                               className="w-4 text-white" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -187,7 +191,7 @@ const Navbar = () => {
                               </path>
                           </svg>
 
-                          <span className="text-white bg-red-700 absolute rounded-full text-xs -mt-2.5 ml-2 py-0 px-1.5">{getItemsCount()}</span>
+                          <span className="text-white bg-red-700 absolute rounded-full text-xs -mt-2.5 ml-2 py-0 px-1.5">{getItemsCartCount()}</span>
                       </div>
                     </Link>
 

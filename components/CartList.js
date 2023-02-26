@@ -19,8 +19,8 @@ const CartList = ({ data }) => {
         </div>
         <div className="col-span-2 pt-3">
             <div className="flex items-center space-x-2 text-sm justify-between">
-                <span className="text-gray-400">{item.quantity} x {item.price}</span>
                 <span className="text-indigo-400 font-semibold inline-block">{(item.price * item.quantity).toLocaleString('en-US', {  style: 'currency',  currency: 'BRL',})}</span>
+                <span className="text-gray-400">{item.quantity} x {item.price}</span>
             </div>
         </div>
     </li>

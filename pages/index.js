@@ -5,6 +5,7 @@ import { SliderData } from '../components/SliderData';
 import { supabase } from '../supabase'
 import { useEffect, useState } from 'react'
 import { Oval } from  'react-loader-spinner'
+import ReactModal from 'react-modal';
 
 export default function Home() {
 
@@ -15,7 +16,8 @@ export default function Home() {
   const [statusPage, setStatusPage] = useState(false)
   const [produtosLoaded, setProdutosLoaded] = useState(true)
   const [bannersLoaded, setBannersLoaded] = useState(true)
-  
+  const [openModal, setOpenModal] = useState(false)
+
 
   useEffect(() => {
       getProdutos()
@@ -128,6 +130,59 @@ export default function Home() {
                 </div>
               </section>
             </div>
+
+
+
+
+
+
+
+
+
+
+
+            
+<ReactModal
+isOpen={
+  openModal
+/* Boolean describing if the modal should be shown or not. */}
+style={
+  { overlay: {}, content: {} }
+/* Object indicating styles to be used for the modal.
+   It has two keys, `overlay` and `content`.
+   See the `Styles` section for more details. */}
+contentLabel={
+  "Example Modal"
+/* String indicating how the content container should be announced
+   to screenreaders */}
+className={
+  "ReactModal__Content"
+/* String className to be applied to the modal content.
+   See the `Styles` section for more details. */}
+
+role={
+  "dialog"
+/* String indicating the role of the modal, allowing the 'dialog' role
+   to be applied if desired.
+   This attribute is `dialog` by default. */}
+
+preventScroll={
+  false
+/* Boolean indicating if the modal should use the preventScroll flag when
+   restoring focus to the element that had focus prior to its display. */}
+
+parentSelector={
+  () => document.body
+/* Function that will be called to get the parent element
+   that the modal will be attached to. */}
+
+
+>
+<h1 className="py-6 border-b-2 text-xl text-gray-600 px-8 bg-white">Pagamento</h1>
+
+ 
+</ReactModal>
+
         </>
 
 : 

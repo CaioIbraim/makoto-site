@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.10.0",
     "@paypal/react-paypal-js": "^7.8.2",
     "@prisma/client": "^4.7.1",
     "@reduxjs/toolkit": "^1.9.1",
@@ -27,6 +28,7 @@
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.6.0",
     "react-loader-spinner": "^5.3.4",
+    "react-modal": "^3.16.1",
     "react-redux": "^8.0.5",
     "recoil": "^0.7.6",
     "redux-persist": "^6.0.0",
