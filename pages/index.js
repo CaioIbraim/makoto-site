@@ -54,14 +54,15 @@ export default function Home() {
                 </h1>
 
                 <div className="w-full flex space-x-4 p-6 items-center justify-center">
-                <div className="w-2xl mb-6 font-light text-white lg:mb-8 md:text-lg lg:text-xl  font-extrabold">
+    
+                <div className="w-2xl mb-6 font-extrabold text-white lg:mb-8 md:text-lg lg:text-xl">
                  PERSONALIZAR SEU KIMONO
                  <p className="p-2 bg-red-600 cursor-pointer" onClick={() => {window.location ='/varejo'}}>
                   <h1> Varejo </h1>
                   (A partir de uma unidade)
                  </p>
                 </div>
-                <div className="w-2xl mb-6 font-light text-white lg:mb-8 md:text-lg lg:text-xl font-extrabold">
+                <div className="w-2xl mb-6 font-extrabold text-white lg:mb-8 md:text-lg lg:text-xl">
                   PADRONIZAR A EQUIPE
                   <p className="p-2 bg-red-600 cursor-pointer" onClick={() => {window.location ='/atacado'}}>
                     <h1>Atacado</h1>
