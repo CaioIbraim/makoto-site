@@ -39,7 +39,7 @@ export default function Home() {
                 <Image
                 className='absolute z-1'
                 layout='fill'
-                objectFit='fill'
+                objectFit='cover'
                 src='/kits.jpg'
                 alt='/'
                 />
@@ -54,14 +54,14 @@ export default function Home() {
                 </h1>
 
                 <div className="w-full flex space-x-4 p-6 items-center justify-center">
-                <div className="max-w-2xl mb-6 font-light text-gray-200 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+                <div className="w-2xl mb-6 font-light text-white lg:mb-8 md:text-lg lg:text-xl  font-extrabold">
                  PERSONALIZAR SEU KIMONO
                  <p className="p-2 bg-red-600 cursor-pointer" onClick={() => {window.location ='/varejo'}}>
                   <h1> Varejo </h1>
                   (A partir de uma unidade)
                  </p>
                 </div>
-                <div className="max-w-2xl mb-6 font-light text-gray-200 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">
+                <div className="w-2xl mb-6 font-light text-white lg:mb-8 md:text-lg lg:text-xl font-extrabold">
                   PADRONIZAR A EQUIPE
                   <p className="p-2 bg-red-600 cursor-pointer" onClick={() => {window.location ='/atacado'}}>
                     <h1>Atacado</h1>
