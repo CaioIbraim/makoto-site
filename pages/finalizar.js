@@ -326,6 +326,8 @@ const Finalizar = () => {
 
     const handleSubmit = () => {
 
+
+
        if((estado != "") && (cep.length > 7) && (cidade != "") && (endereco != "") && (email != "") && (cpf != "") && (nome != "") && (numero != "") && (frete != 0) ){   
             const body = {
             "transaction_amount": (totalPrice() + frete),
@@ -351,6 +353,8 @@ const Finalizar = () => {
             setInterval( () => {
                 getStatusPayment()
             }, 1000)
+        }else{
+            alert("Preencha corretamente o formulário")
         }
 
     }

@@ -84,9 +84,19 @@ const Navbar = () => {
                 >
                   <div className="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto">
                   
+                   <Link href="/atacado">
+                      <a className="border-2 md:border-none  mt-1 lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white">
+                        Comprar Atacado
+                      </a>
+                    </Link>
+
+                    <Link href="/varejo">
+                      <a className="border-2 md:border-none  mt-1 lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white">
+                        Comprar Varejo
+                      </a>
+                    </Link>
 
 
-               
 
                     <Link href="/sobre">
                       <a className="border-2 md:border-none  mt-1 lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white">
@@ -160,7 +170,17 @@ const Navbar = () => {
                 >
                   <div className="lg:inline-flex lg:flex-row lg:ml-auto lg:w-auto w-full lg:items-center items-start  flex flex-col lg:h-auto justify-between mt-8">
                   
+                  <Link href="/atacado">
+                      <a className="border-2 md:border-none  mt-1 lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white">
+                        Comprar Atacado
+                      </a>
+                    </Link>
 
+                    <Link href="/varejo">
+                      <a className="border-2 md:border-none  mt-1 lg:inline-flex lg:w-auto w-full px-3 py-2 rounded text-white font-bold items-center justify-center hover:bg-gray-600 hover:text-white">
+                        Comprar Varejo
+                      </a>
+                    </Link>
 
                   
                     <Link href="/sobre">
